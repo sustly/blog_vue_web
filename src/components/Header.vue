@@ -1,20 +1,20 @@
 <template>
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">blog</a>
+        <a class="navbar-brand" href="#">vue blog</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse " id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="av-item active">
-              <a class="nav-link" href="#">主页 <span class="sr-only">(current)</span></a>
+              <router-link class="nav-link" to="/">主页 <span class="sr-only">(current)</span></router-link>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">最热文章</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">关于我</a>
+              <router-link class="nav-link" to="/aboutMe">关于本站</router-link>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

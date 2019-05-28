@@ -20,7 +20,7 @@
     line-height: 40px;
     position: fixed;
     bottom: 0;
-    width: 72%;
+    width: 74%;
     text-align: center;
     background: #333;
     color: #fff;
