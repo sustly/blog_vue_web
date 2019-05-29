@@ -22,7 +22,7 @@
                   </div>
                   <div class="form-group">
                     <label class="sr-only" for="form-password">Password</label>
-                    <input type="password" v-model="password" placeholder="Password..." class="form-password form-control" id="form-password">
+                    <input type="password" v-model="password" @keydown.enter="login()" placeholder="Password..." class="form-password form-control" id="form-password">
                   </div>
                   <button type="submit" @click="login()" class="btn">Sign in!</button>
               </div>

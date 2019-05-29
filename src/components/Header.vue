@@ -30,6 +30,22 @@
               </div>
             </li>
           </ul>
+
+          <ul class="navbar-nav" v-if="!isLogin()">
+            <li class="nav-item dropdown" >
+              <a class="nav-link dropdown-toggle" href="/"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                文章管理
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <router-link class="dropdown-item" to="/" >java</router-link>
+                <router-link class="dropdown-item" to="/">c++</router-link>
+                <router-link class="dropdown-item" to="/">python</router-link>
+                <router-link class="dropdown-item" to="/">vue</router-link>
+                <router-link class="dropdown-item" to="/">javascript</router-link>
+              </div>
+            </li>
+          </ul>
+
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="全文检索" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">查找</button>

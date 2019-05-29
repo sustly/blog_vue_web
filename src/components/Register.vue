@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group">
                   <label class="sr-only" for="form-password">再次输入</label>
-                  <input type="password" v-model="rePassword" placeholder="RePassword..." class="form-password form-control" id="form-rePassword">
+                  <input type="password" @keydown.enter="registerIn()" v-model="rePassword" placeholder="RePassword..." class="form-password form-control" id="form-rePassword">
                 </div>
                 <button type="submit" class="btn" v-on:click="registerIn()">Register!</button>
 
