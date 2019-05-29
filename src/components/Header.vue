@@ -1,3 +1,4 @@
+<script src="../router/index.js"></script>
 <template>
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -11,19 +12,21 @@
               <router-link class="nav-link" to="/">主页 <span class="sr-only">(current)</span></router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">最热文章</a>
+              <router-link class="nav-link" to="/hot">最热文章</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/aboutMe">关于本站</router-link>
+              <router-link class="nav-link" to="/aboutWe">关于本站</router-link>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 分类
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#" >Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <router-link class="dropdown-item" to="/" >java</router-link>
+                <router-link class="dropdown-item" to="/">c++</router-link>
+                <router-link class="dropdown-item" to="/">python</router-link>
+                <router-link class="dropdown-item" to="/">vue</router-link>
+                <router-link class="dropdown-item" to="/">javascript</router-link>
               </div>
             </li>
           </ul>
@@ -32,10 +35,22 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">查找</button>
           </form>
 
-          <ul class="navbar-nav ml-auto">
-            <li> <router-link to="/login" class="nav-link"> 登陆</router-link></li>
-            <li> <router-link to="/register" class="nav-link"> 注册</router-link></li>
-          </ul>
+          <div class="navbar-nav ml-auto" v-if="isLogin()">
+            <ul class="navbar-nav ml-auto" >
+              <li> <router-link to="/login" class="nav-link"> 登陆</router-link></li>
+              <li> <router-link to="/register" class="nav-link"> 注册</router-link></li>
+            </ul>
+          </div>
+          <div class="navbar-nav ml-auto" v-else>
+            <ul class="navbar-nav">
+              <li class="av-item active">
+                <router-link class="nav-link" to="/">欢迎 {{username}}<span class="sr-only">(current)</span></router-link>
+              </li>
+              <li class="av-item active"> <button @click="loginOut()" class="btn btn-outline-primary"> 退出</button></li>
+            </ul>
+          </div>
+
+
         </div>
       </nav>
     </div>
@@ -43,7 +58,22 @@
 
 <script>
     export default {
-        name: "Header"
+        name: "Header",
+      data(){
+        return {
+          username:sessionStorage.getItem("user")
+        }
+      },
+      methods:{
+          isLogin:function () {
+            return sessionStorage.getItem("user") == null;
+
+          },
+        loginOut:function () {
+          sessionStorage.removeItem("user");
+          this.$router.push({name:'loginLink'})
+        }
+      }
     }
 </script>
 
