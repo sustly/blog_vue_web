@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" >
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/">vue blog</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,11 +36,8 @@
                 文章管理
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <router-link class="dropdown-item" to="/" >java</router-link>
-                <router-link class="dropdown-item" to="/">c++</router-link>
-                <router-link class="dropdown-item" to="/">python</router-link>
-                <router-link class="dropdown-item" to="/">vue</router-link>
-                <router-link class="dropdown-item" to="/">javascript</router-link>
+                <router-link class="dropdown-item" to="/article" >添加文章</router-link>
+                <router-link class="dropdown-item" to="/Article">管理文章</router-link>
               </div>
             </li>
           </ul>

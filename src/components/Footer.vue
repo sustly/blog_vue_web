@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <div class="footer">
-    Copyright © 2019-2021 sustly. All rights reserved. 陕ICP备18019714号
+    Copyright © 2019-2021 sustly. All rights reserved. <a href="http://www.beian.gov.cn/portal/index.do">陕ICP备18019714号-1</a>
   </div>
 
 </div>
