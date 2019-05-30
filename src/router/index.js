@@ -14,7 +14,8 @@ export default new Router({
     {path:"/aboutWe",component:AboutMe},
     {path:"/login",name:"loginLink",component:Login},
     {path:"/register",name:"registerLink",component:Register},
-    {path:"/hot",name:"hotLink",component:Hot}
+    {path:"/hot",name:"hotLink",component:Hot},
+    {path:"*",component:Home}
   ],
   mode:'history'
 })
