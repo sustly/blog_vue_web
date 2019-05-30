@@ -7,8 +7,11 @@
           选择分类
         </button>
         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-          <a class="dropdown-item" href="#">Dropdown link</a>
-          <a class="dropdown-item" href="#">Dropdown link</a>
+          <router-link class="dropdown-item" to="/" >java</router-link>
+          <router-link class="dropdown-item" to="/">c++</router-link>
+          <router-link class="dropdown-item" to="/">python</router-link>
+          <router-link class="dropdown-item" to="/">vue</router-link>
+          <router-link class="dropdown-item" to="/">javascript</router-link>
         </div>
       </div>
 
@@ -30,7 +33,7 @@
 
 
     <div id="editor">
-      <mavon-editor style="height: 100%;"></mavon-editor>
+      <mavon-editor style="height: 100%;z-index:-999;" ></mavon-editor>
     </div>
     <!--<app-footer></app-footer>-->
 

@@ -25,6 +25,7 @@
                     <input type="password" v-model="password" @keydown.enter="login()" placeholder="Password..." class="form-password form-control" id="form-password">
                   </div>
                   <button type="submit" @click="login()" class="btn">Sign in!</button>
+                  <button type="submit" class="btn" v-on:click="back()" >Back Home!</button>
               </div>
             </div>
           </div>
@@ -62,7 +63,10 @@
                 alert(data.message);
               }
             })
-          }
+          },
+        back:function () {
+          this.$router.push({name:'homeLink'})
+        }
       }
     }
 </script>

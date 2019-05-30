@@ -29,7 +29,7 @@
                   <input type="password" @keydown.enter="registerIn()" v-model="rePassword" placeholder="RePassword..." class="form-password form-control" id="form-rePassword">
                 </div>
                 <button type="submit" class="btn" v-on:click="registerIn()">Register!</button>
-
+               <button type="submit" class="btn" v-on:click="back()" >Back Home!</button>
             </div>
           </div>
         </div>
@@ -69,6 +69,9 @@
                 }
             })
           }
+      },
+      back:function () {
+        this.$router.push({name:'homeLink'})
       }
     }
   }
