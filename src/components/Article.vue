@@ -32,8 +32,8 @@
 
 
 
-    <div id="editor">
-      <mavon-editor style="height: 100%;z-index:-999;" ></mavon-editor>
+    <div id="editor" v-on:mousedown="onWrite" v-on:mouseleave="onRead">
+      <mavon-editor v-bind:style="styleChange" ></mavon-editor>
     </div>
     <!--<app-footer></app-footer>-->
 
@@ -49,7 +49,8 @@
         name: "Article",
       data(){
           return{
-            itemize:"选择分类"
+            itemize:"选择分类",
+            styleChange:"height: 100%;z-index:-999;"
           }
       },
       components: {
@@ -60,6 +61,12 @@
       methods:{
         changeTitle:function (value) {
           this.itemize = value;
+        },
+        onWrite:function () {
+          this.styleChange = "height: 100%;z-index:999;";
+        },
+        onRead:function () {
+          this.styleChange = "height: 100%;z-index:-999;";
         }
       }
 
