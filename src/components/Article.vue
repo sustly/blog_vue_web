@@ -3,15 +3,15 @@
     <!--<app-header></app-header>-->
     <div class="btn-group" style="margin: 20px 30px;" role="group" aria-label="Button group with nested dropdown">
       <div class="btn-group" role="group">
-        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          选择分类
+        <button id="btnGroupDrop1" v-bind:value="itemize" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{itemize}}
         </button>
         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-          <router-link class="dropdown-item" to="/" >java</router-link>
-          <router-link class="dropdown-item" to="/">c++</router-link>
-          <router-link class="dropdown-item" to="/">python</router-link>
-          <router-link class="dropdown-item" to="/">vue</router-link>
-          <router-link class="dropdown-item" to="/">javascript</router-link>
+          <a class="dropdown-item" v-on:click="changeTitle('java')" >java</a>
+          <a class="dropdown-item" v-on:click="changeTitle('c++')">c++</a>
+          <a class="dropdown-item" v-on:click="changeTitle('python')">python</a>
+          <a class="dropdown-item" v-on:click="changeTitle('vue')">vue</a>
+          <a class="dropdown-item" v-on:click="changeTitle('javascript')">javascript</a>
         </div>
       </div>
 
@@ -47,10 +47,20 @@
   import 'mavon-editor/dist/css/index.css'
     export default {
         name: "Article",
+      data(){
+          return{
+            itemize:"选择分类"
+          }
+      },
       components: {
         mavonEditor,
         "app-header":Header,
         "app-footer":Footer
+      },
+      methods:{
+        changeTitle:function (value) {
+          this.itemize = value;
+        }
       }
 
     }
