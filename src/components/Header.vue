@@ -37,7 +37,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <router-link class="dropdown-item" to="/article" >添加文章</router-link>
-                <router-link class="dropdown-item" to="/Article">管理文章</router-link>
+                <router-link class="dropdown-item" to="/articleManager">管理文章</router-link>
               </div>
             </li>
           </ul>

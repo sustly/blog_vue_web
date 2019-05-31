@@ -6,6 +6,7 @@ import Login from "../components/Login"
 import Register from "../components/Register"
 import Hot from "../components/Hot"
 import Article from "../components/Article"
+import ArticleManager from "../components/ArticleManager"
 
 Vue.use(Router);
 
@@ -17,6 +18,7 @@ export default new Router({
     {path:"/register",name:"registerLink",component:Register},
     {path:"/hot",name:"hotLink",component:Hot},
     {path:"/article",component:Article},
+    {path:"/articleManager",component:ArticleManager},
     {path:"*",component:Home}
   ],
   mode:'history'
