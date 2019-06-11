@@ -18,9 +18,9 @@
   .footer {
     height: 40px;
     line-height: 40px;
-    position: fixed;
+   /* position: fixed;*/
     bottom: 0;
-    width: 72%;
+    width: 100%;
     text-align: center;
     background: #333;
     color: #fff;
