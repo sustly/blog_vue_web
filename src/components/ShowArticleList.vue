@@ -45,7 +45,7 @@
     #starlist ul.sub li a { color: #fff; font-weight: normal; border-bottom: none; }
     #starlist ul.sub li a:hover, #starlist li:hover a, #starlist #selected { color: #fff; }
     .menu span { display: block; width: 50px; height: 50px; background: #12b7de; opacity: 0.5; position: absolute; top: 0; right: 0; border-left: #49ccea 1px solid; }
-    .menu:before { right: 20px; }
+
     /**/
     .box, article { width: 96% }
     article { padding-top: 80px; }
@@ -70,23 +70,20 @@
     .zhuanti li { width: 27.6%; padding: 8px }
   }
   @media only screen and (max-width: 480px) {
-    .headline { width: 100% }
     .headline ul { height: auto; padding-bottom: 10px; overflow: hidden }
     .headline ul li { width: 49%; float: left; }
     .headline ul li:last-child { float: right }
     .headline ul li span { padding: 0 20px }
-    .banbox { width: 100% }
-    .fader { height: 200px; }
-    .newspic { width: 100%; height: auto }
+
     .newspic li { width: 49%; float: left }
     .newspic li:last-child { float: right }
     .newspic li a { height: 100% }
-    .newslist { float: none; width: 100% }
+
     .zhuanti ul { padding: 0 }
     .zhuanti li { width: 44%; padding: 8px; }
     .zhuanti ul:before { left: 0; }
     .zhuanti ul:after { bottom: 0 }
-    .ad { padding: 5px }
+
     .blogtitle { font-size: 16px }
 
     .bplist a img { height: 100% }
@@ -94,37 +91,33 @@
     .blogpic { width: 100px; margin-right: 10px; height: 76px; }
     .blogtext { margin-top: 15px }
     .lanmu h1 { font-size: 18px; }
-    .top_pic { width: 100%; float: none; margin-bottom: 10px }
-    .top_box { float: none; width: 100%; }
+
     .liucheng li, .jianzhan li:nth-child(1), .jianzhan li:nth-child(3) { width: 100%; }
     .muban li section { height: auto }
     .site_tj li { width: 50% }
-    .about { padding: 20px }
+
     .ab_box p:last-child { width: 100%; clear: both; padding-top: 10px }
-    .ly_button { float: none; display: block; }
+
     .xinlu li { width: 50% }
     .myblog li, .xiangsi li { width: 50% }
     .qq_join li { width: 50%; margin-bottom: 20px }
     .wxbox ul { overflow: hidden; text-align: center }
     .wxbox li { float: none; display: inline-block }
-    .wxbox { float: none }
-    .endnav { width: 100%; overflow: hidden; margin-top: 20px }
+
     .endnav p { margin: 0 10px }
     .price_info img { position: static }
     .free li { width: 100%; margin-bottom: 10px }
     .newspic span { padding: 0 8px; }
-    .hnav { float: none; width: 100%; clear: both; display: block; overflow: hidden; }
-    .ztpic { height: 60px; }
+
     .zhuanti li b { -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2; font-size: 14px; height: 42px; line-height: 24px; white-space: inherit; }
     .bloginfo { width: 100% }
     .imgscale img { height: 100%; max-width: 100%; }
     .blogpic i { display: none }
     .fader .slide img { height: 200px; }
     .otherlink li{width:100%}
-    .tab_buttons { overflow-x: auto;}
+
     .tab_buttons ul { width: 600px;overflow-x: scroll;}
     .tab_buttons li {margin-right: 30px;width: auto;}
-    .newscurrent:after{width:100%}
   }
   /* css */
   * { margin: 0; padding: 0 }
@@ -133,25 +126,18 @@
   ul, li { list-style: none; }
   a { text-decoration: none; color: #333; }
   a:hover { color: #000; text-decoration: none; }
-  .clear { clear: both; width: 100%; overflow: hidden; height: 20px }
-  .clearblank { clear: both; width: 100%; overflow: hidden; }
-  .fl { float: left!important; }
-  .fr { float: right!important; }
-  .box, article { width: 1200px; margin: auto; overflow: hidden }
-  .navbox { width: 1200px; margin: auto; }
-  .mt20 { margin-top: 20px; }
-  .blue { color: #00C1DE }
+
   /*header*/
   header { width: 100%; padding: 5px 0; background: #1C2327; height: 50px; }
   header::before { background: #000 linear-gradient(to left, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55); content: ""; height: 5px; position: absolute; top: 0; width: 100%; }
-  .logo { float: left; margin-right: 60px; line-height: 50px; color: #FFF; font-size: 22px }
+
   .logo a { color: #FFF }
   .logo img { margin-top: 14px; }
   .imgscale img { width: 100%; -moz-transition: all .5s ease; -webkit-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; transition: all 0.5s; }
   .imgscale:hover img { transform: scale(1.1); }
   /*nav*/
   nav { float: left; height: 50px; line-height: 50px; text-align: center; }
-  #starlist { }
+
   #starlist li { position: relative; display: inline; float: left; width: max-content; }
   #starlist li a { display: inline; float: left; padding: 0 20px; color: #fff }
   #starlist li a:hover, #starlist #selected, .selected > a, #starlist li:hover { color: #00c1de; }
@@ -163,27 +149,15 @@
   #starlist ul.sub li a:hover { color: #00c1de }
   #starlist li:hover ul.sub { display: block }
   /*箭头*/
-  .open .navicon { background: none }
-  .open .navicon:before { margin-top: 0; -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-  .open .navicon:after { margin-top: 0; -webkit-transform: rotate(-45deg); transform: rotate(-45deg); }
-  .open .navicon:before, .open .navicon:after { content: ''; display: block; width: 30px; height: 5px; position: absolute; background: #fff; }
   /*menu+*/
   .menu span { display: none; width: 50px; height: 50px; background: #12b7de; opacity: 0.5; position: absolute; top: 0; right: 0; border-left: #49ccea 1px solid; }
   /*search*/
-  .searchbox { width: 1200px; margin: 10px auto; overflow: hidden; background: #ffffff; position: relative; }
-  .search { width: 50%; margin: 20px auto; background: #222; border-radius: 0 5px 5px 0; position: relative; border: #ccc 1px solid; display: none; }
-  .search input.input_submit { border: 0; background: 0; color: #fff; outline: none; position: absolute; top: 10px; right: 10% }
-  .search input.input_text { border: 0; line-height: 36px; height: 36px; width: 72%; padding-left: 10px; outline: none }
   .open { display: block !important }
   /*article*/
 
   /*lbox*/
   .lbox { width: 75%; float: left; overflow: hidden }
   /*banner*/
-  .banbox { width: 68.5%; overflow: hidden; float: left; border-radius: 3px; margin-bottom: 20px }
-  .banner { width: 100%; overflow: hidden; float: left; }
-  .fader { position: relative; width: 100%; height: 260px; /*padding-top: 50%;*/ font-family: "futura", arial; overflow: hidden; }
-  .fader .slide { position: absolute; width: 100%; top: 0; z-index: 1; opacity: 0; }
   .fader .slide img { width: 100%; height: 260px; margin: auto; }
   .fader .prev, .fader .next { position: absolute; height: 32px; line-height: 32px; width: 40px; top: 50%; left: 50px; z-index: 4; margin-top: -25px; cursor: pointer; opacity: 0; transition: all 150ms; }
   .fader .pager_list { position: absolute; width: 100%; height: 26px; padding: 0; line-height: 40px; bottom: 0; text-align: center; z-index: 4; }
