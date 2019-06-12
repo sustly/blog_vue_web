@@ -7,7 +7,7 @@
           <span class="blogpic imgscale"><i><a href="/">设计制作</a></i><a href="/" title=""><img v-bind:src="'../../static/images/'+i+'.jpg'" alt=""></a></span>
           <p class="blogtext">就拿我自己来说吧，有时候会很矛盾，设计好的作品，不把它分享出来，会觉得待在自己电脑里面实在是没有意义。干脆就发布出去吧。我也害怕收到大家不好的评论，有些评论，可能说者无意，但是对于每一个用心的站长来说，都会受很深的影响，愤怒，恼羞。... </p>
           <p class="bloginfo"><i class="avatar"><img src="../../static/images/avatar.png"></i><span>123</span><span>2018-10-28</span><span>【<a href="/">设计制作</a>】</span></p>
-          <router-link to="/" class="viewmore">阅读更多</router-link> </li>
+          <router-link v-bind:to="'/showArticle/' + i" class="viewmore">阅读更多</router-link> </li>
       </ul>
       </div>
     </div>

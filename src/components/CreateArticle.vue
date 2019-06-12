@@ -46,7 +46,7 @@
   import { mavonEditor } from 'mavon-editor'
   import 'mavon-editor/dist/css/index.css'
     export default {
-        name: "Article",
+        name: "CrateArticle",
       data(){
           return{
             itemize:"选择分类",
