@@ -60,6 +60,9 @@
                 'Content-Type': 'application/json'
               }
             }).then(result => {
+              if (!result.ok) {
+                alert("通信失败，请联系管理员！");
+              }
                 return result.json()
               }).then(data => {
                 if (data.result ===true) {
