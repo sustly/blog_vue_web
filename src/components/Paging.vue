@@ -20,7 +20,17 @@
 
 <script>
     export default {
-        name: "Paging"
+        name: "Paging",
+      data(){
+          return{
+            myPage:this.$store.state.page
+          }
+      },
+      computed:{
+          page(){
+            return this.$store.state.page
+          }
+      }
     }
 </script>
 
