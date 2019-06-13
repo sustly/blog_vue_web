@@ -10,12 +10,17 @@
           <router-link v-bind:to="'/showArticle/' + i" class="viewmore">阅读更多</router-link> </li>
       </ul>
       </div>
+      <app-paging></app-paging>
     </div>
 </template>
 
 <script>
+  import Paging from "../components/Paging"
     export default {
-        name: "ShowArticle"
+        name: "ShowArticle",
+      components:{
+          "app-paging":Paging
+      }
     }
 </script>
 
