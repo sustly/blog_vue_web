@@ -25,11 +25,11 @@
     data(){
           return {
             id:this.$route.params.id,
-            blog:null
+            blog:this.$store.getters.getBlog
           }
     },
     created(){
-      fetch("/api/blog/get/"+this.id,{
+      fetch("/api/blog/getArticle/"+this.id,{
         method:"post",
         headers: {
           'Content-Type': 'application/json'
@@ -41,7 +41,7 @@
         return result.json()
       }).then(data => {
         if (data.result ===true) {
-          this.blog = data.blog
+          this.$store.commit("setBlog",data.blog);
         }
       })
     },

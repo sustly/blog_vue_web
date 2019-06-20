@@ -25,11 +25,6 @@
           return{
             myPage:this.$store.state.page
           }
-      },
-      computed:{
-          page(){
-            return this.$store.state.page
-          }
       }
     }
 </script>

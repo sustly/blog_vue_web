@@ -3,8 +3,8 @@
     <!--<app-header></app-header>-->
     <div class="btn-group" style="margin: 20px 30px;" role="group" aria-label="Button group with nested dropdown">
       <div class="btn-group" role="group">
-        <button id="btnGroupDrop1" v-bind:value="itemize" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{itemize}}
+        <button id="btnGroupDrop1" v-bind:value="category" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{category}}
         </button>
         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
           <a class="dropdown-item" v-on:click="changeTitle('java')" >java</a>
@@ -15,7 +15,7 @@
         </div>
       </div>
 
-      <button type="button" class="btn btn-secondary">提交</button>
+      <button type="button" v-on:click="submit()" class="btn btn-secondary">提交</button>
       <router-link type="button" to="/"  class="btn btn-secondary">返回主页</router-link>
 
     </div>
@@ -27,13 +27,13 @@
           <input type="checkbox" aria-label="Checkbox for following text input"  title="">
         </div>
       </div>
-      <input type="text" class="form-control" placeholder="标题" aria-label="Text input with checkbox" title="">
+      <input type="text" v-model="title" class="form-control" placeholder="标题" aria-label="Text input with checkbox" title="">
     </div>
 
 
 
     <div id="editor" v-on:mousedown="onWrite" v-on:mouseleave="onRead">
-      <mavon-editor v-bind:style="styleChange" ></mavon-editor>
+      <mavon-editor v-model="content" v-bind:style="styleChange" ></mavon-editor>
     </div>
     <!--<app-footer></app-footer>-->
 
@@ -49,8 +49,10 @@
         name: "CrateArticle",
       data(){
           return{
-            itemize:"选择分类",
-            styleChange:"height: 100%;z-index:-999;"
+            category:"选择分类",
+            styleChange:"height: 100%;z-index:-999;",
+            title:"",
+            content:""
           }
       },
       components: {
@@ -60,13 +62,31 @@
       },
       methods:{
         changeTitle:function (value) {
-          this.itemize = value;
+          this.category = value;
         },
         onWrite:function () {
           this.styleChange = "height: 100%;z-index:999;";
         },
         onRead:function () {
           this.styleChange = "height: 100%;z-index:-999;";
+        },
+        submit:function () {
+          fetch("/api/blog/saveArticle",{
+            method:"post",
+            body:JSON.stringify({"content":this.content,"category":this.category,
+              "title":this.title,"createUser":this.$store.getters.getUser.username,
+              "views":null
+            }),
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }).then(result => {
+            if (!result.ok) {
+              alert("通信失败，请联系管理员！");
+            }else {
+              this.$router.push({name:'homeLink'})
+            }
+          })
         }
       }
 

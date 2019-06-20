@@ -24,5 +24,7 @@ export default new Router({
     {path:"/showArticle/:id",name:"showArticleLink",component:ShowArticle},
     {path:"*",component:Home}
   ],
-  mode:'history'
+  /*mode:'history'*/
+  /*vue 去掉#之前是没错的，去掉#，history模式后 build打包后跳转页面当在动态路径时，
+  当刷新页面时会出现空白页面，会出现Uncaught SyntaxError: Unexpected token <错误*/
 })
