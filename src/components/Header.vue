@@ -56,7 +56,7 @@
           <div class="navbar-nav ml-auto" v-else>
             <ul class="navbar-nav">
               <li class="av-item active">
-                <router-link class="nav-link" to="/">欢迎 {{username}}<span class="sr-only">(current)</span></router-link>
+                <router-link class="nav-link" to="/">欢迎 {{this.$store.getters.getUser==null?"":this.$store.getters.getUser.username}}<span class="sr-only">(current)</span></router-link>
               </li>
               <li class="av-item active"> <button @click="loginOut()" class="btn btn-outline-primary"> 退出</button></li>
             </ul>
@@ -73,16 +73,15 @@
         name: "Header",
       data(){
         return {
-          username:sessionStorage.getItem("user")
+          username:null
         }
       },
       methods:{
           isLogin:function () {
-            return sessionStorage.getItem("user") == null;
-
+            return this.$store.getters.getUser == null;
           },
         loginOut:function () {
-          sessionStorage.removeItem("user");
+          this.$store.commit("setUser",null);
           this.$router.push({name:'loginLink'})
         }
       }

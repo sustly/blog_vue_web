@@ -60,7 +60,8 @@
               return result.json()
             }).then(data => {
               if (data.result ===true) {
-                sessionStorage.setItem("user",this.username);
+                data.user.password = null;
+                this.$store.commit("setUser",data.user);
                 this.$router.push({name:'homeLink'})
               }else {
                 alert(data.message);
