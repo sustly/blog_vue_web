@@ -12,11 +12,17 @@ export const store = new Vuex.Store({
   getters:{
     getUser:state => {
       return state.user
+    },
+    getPage:state => {
+      return state.page
     }
   },
   mutations:{
     setUser:(state,user) =>{
       state.user = user
+    },
+    setPage:(state,page) =>{
+      state.page = page
     }
   },
   plugins:[CreatePersistedState({
