@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import CreatePersistedState from 'vuex-persistedstate'
+import PersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex);
 
@@ -25,7 +25,7 @@ export const store = new Vuex.Store({
       state.page = page
     }
   },
-  plugins:[CreatePersistedState({
+  plugins:[PersistedState({
       storage: window.sessionStorage
   })]
 });
