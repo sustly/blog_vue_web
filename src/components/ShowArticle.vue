@@ -6,7 +6,7 @@
         <h3 class="blogtitle">{{blog.title}}</h3>
       </div>
       <div>
-        <p class="bloginfo"><span>{{blog.createUser}}</span><span>{{blog.createTime}}</span><span>【<a href="/">设计制作</a>】</span></p>
+        <p class="bloginfo"><span>{{blog.createUser}}</span><span>{{blog.createTime}}</span><span>【<a v-bind:href="'/'+blog.category">{{blog.category}}</a>】</span></p>
       </div>
       <div style="padding-left: 20px;padding-right: 20px">
         <div id="content" v-html="blog.content"  class="markdown-body"></div>
@@ -54,7 +54,7 @@
 
 <style scoped>
   .blogtitle { font-size: 16px }
-  .blogtitle { margin: 0 0 10px 0; font-size: 18px; overflow: hidden; }
+  .blogtitle { margin: 20px 0 20px 0; font-size: 18px; overflow: hidden; }
   .blogtitle b { color: #F00 }
   .blogtitle {text-align: center}
   .bloginfo { width: 100% }

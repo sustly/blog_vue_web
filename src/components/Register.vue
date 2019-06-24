@@ -50,6 +50,14 @@
     },
     methods:{
       registerIn:function () {
+        if (this.username === '') {
+          alert("请填写用户名");
+          return;
+        }
+        if (this.password === '') {
+          alert("请填写密码");
+          return;
+        }
           if (this.password !== this.rePassword) {
             alert("两次密码输入不一致！");
           }else {

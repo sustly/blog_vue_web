@@ -47,6 +47,14 @@
       },
       methods:{
           login:function () {
+            if (this.username === '') {
+              alert("请填写用户名");
+              return;
+            }
+            if (this.password === '') {
+              alert("请填写密码");
+              return;
+            }
             fetch("/api/blog/login",{
               method:"post",
               body:JSON.stringify({"username": this.username,"password": this.password}),

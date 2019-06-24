@@ -71,6 +71,18 @@
           this.styleChange = "height: 100%;z-index:-999;";
         },
         submit:function () {
+          if (this.title === '') {
+            alert("请填写标题！");
+            return;
+          }
+          if (this.content === '') {
+            alert("请填写正文！");
+            return;
+          }
+          if (this.category === '选择分类') {
+            alert("请选择分类！");
+            return;
+          }
           fetch("/api/blog/saveArticle",{
             method:"post",
             body:JSON.stringify({"content":this.content,"category":this.category,
