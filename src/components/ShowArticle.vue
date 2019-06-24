@@ -6,10 +6,10 @@
         <h3 class="blogtitle">{{blog.title}}</h3>
       </div>
       <div>
-        <p class="bloginfo"><i class="avatar"></i><span>{{blog.createUser}}</span><span>{{blog.createTime}}</span><span>【<a href="/">设计制作</a>】</span></p>>
+        <p class="bloginfo"><span>{{blog.createUser}}</span><span>{{blog.createTime}}</span><span>【<a href="/">设计制作</a>】</span></p>
       </div>
-      <div>
-        <div id="content" v-html="blog.content" class="markdown-body"></div>
+      <div style="padding-left: 20px;padding-right: 20px">
+        <div id="content" v-html="blog.content"  class="markdown-body"></div>
       </div>
     </div>
     <app-footer></app-footer>
@@ -56,10 +56,10 @@
   .blogtitle { font-size: 16px }
   .blogtitle { margin: 0 0 10px 0; font-size: 18px; overflow: hidden; }
   .blogtitle b { color: #F00 }
+  .blogtitle {text-align: center}
   .bloginfo { width: 100% }
+  .bloginfo {text-align: center}
   .bloginfo { margin-top: 20px; overflow: hidden; color: #999; line-height: 34px; }
   .bloginfo span { margin: 0 5px }
   .bloginfo span a { color: #096 }
-  .avatar { position: relative; float: left; width: 30px; height: 30px; border-radius: 100%; padding: 2px; display: block; background: -webkit-linear-gradient(bottom left, rgba(0,153,255,.9), rgba(42,228,197,.7)); background: -o-linear-gradient(bottom left, rgba(0,153,255,.9), rgba(42,228,197,.7)); background: linear-gradient(to top right, rgba(0,153,255,.9), rgba(42,228,197,.7)); }
-  .avatar img { width: 100%; border-radius: 50%; }
 </style>
