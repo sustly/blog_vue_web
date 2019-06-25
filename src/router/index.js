@@ -8,6 +8,7 @@ import Hot from "../components/Hot"
 import CrateArticle from "../components/CreateArticle"
 import ArticleManager from "../components/ArticleManager"
 import ShowArticle from "../components/ShowArticle"
+import UpdateArticle from "../components/updateArticle"
 
 
 Vue.use(Router);
@@ -21,7 +22,8 @@ export default new Router({
     {path:"/hot",name:"hotLink",component:Hot},
     {path:"/crateArticle",component:CrateArticle},
     {path:"/articleManager",component:ArticleManager},
-    {path:"/showArticle/:id",name:"showArticleLink",component:ShowArticle},
+    {path:"/showArticle",name:"showArticleLink",component:ShowArticle},
+    {path:"/updateArticle",name:"updateArticleLink",component:UpdateArticle},
     {path:"*",component:Home}
   ],
   /*mode:'history'*/

@@ -52,8 +52,28 @@
             category:"选择分类",
             styleChange:"height: 100%;z-index:-999;",
             title:"",
-            content:""
+            content:"",
+            id:this.$store.getters.getId
           }
+      },
+      created(){
+          fetch("/api/blog/getArticle/"+this.id,{
+            method:"post",
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }).then(result => {
+            if (!result.ok) {
+              alert("通信失败，请联系管理员！");
+            }
+            return result.json()
+          }).then(data => {
+            if (data.result ===true) {
+              this.title = data.blog.title;
+              this.content = data.blog.content;
+              this.category = data.blog.category;
+            }
+          })
       },
       components: {
         mavonEditor,
@@ -74,8 +94,7 @@
           fetch("/api/blog/updateArticle",{
             method:"post",
             body:JSON.stringify({"content":this.content,"category":this.category,
-              "title":this.title,"createUser":this.$store.getters.getUser.username,
-              "views":null
+              "title":this.title
             }),
             headers: {
               'Content-Type': 'application/json',

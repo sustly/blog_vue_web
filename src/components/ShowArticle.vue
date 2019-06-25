@@ -24,7 +24,7 @@
         name: "ShowArticle",
     data(){
           return {
-            id:this.$route.params.id,
+            id:this.$store.getters.getId,
             blog:this.$store.getters.getBlog
           }
     },
