@@ -10,16 +10,28 @@
           <a v-on:click="read(i)" class="viewmore">阅读更多</a> </li>
       </ul>
       </div>
-      <app-paging></app-paging>
+      <div style="padding-left: 30%">
+        <pagination v-bind:records="1000" v-model="page" v-bind:options="options" >
+        </pagination>
+      </div>
     </div>
 </template>
 
 <script>
-  import Paging from "../components/Paging"
     export default {
         name: "ShowArticle",
-      components:{
-          "app-paging":Paging
+      data(){
+          return {
+            page:1,
+            options:{theme:'bootstrap4',texts:{count:''}}}
+      },
+      watch:{
+        page:{
+          handler(newval, oldval){
+            console.log(newval)
+          },
+          immediate:true
+        }
       },
       methods:{
           read(i){

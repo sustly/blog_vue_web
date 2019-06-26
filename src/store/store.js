@@ -7,16 +7,12 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state:{
     user:null,
-    page:null,
     blog:null,
     id:0
   },
   getters:{
     getUser:state => {
       return state.user
-    },
-    getPage:state => {
-      return state.page
     },
     getBlog:state => {
       return state.blog
@@ -28,9 +24,6 @@ export const store = new Vuex.Store({
   mutations:{
     setUser:(state,user) =>{
       state.user = user
-    },
-    setPage:(state,page) =>{
-      state.page = page
     },
     setBlog:(state,blog) =>{
       state.blog = blog

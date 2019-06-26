@@ -31,7 +31,12 @@
       </tr>
       </tbody>
     </table>
-    <app-paging></app-paging>
+
+    <div style="padding-left: 30%">
+      <pagination v-bind:records="1000" v-model="page" v-bind:options="options" >
+      </pagination>
+    </div>
+
     <app-footer></app-footer>
   </div>
 </template>
@@ -39,13 +44,24 @@
 <script>
   import Header from "../components/Header"
   import Footer from "../components/Footer"
-  import  Paging from "../components/Paging"
     export default {
         name: "ArticleManager",
       components:{
         "app-header":Header,
         "app-footer":Footer,
-        "app-paging":Paging
+      },
+      data(){
+        return {
+          page:1,
+          options:{theme:'bootstrap4',texts:{count:''}}}
+      },
+      watch:{
+        page:{
+          handler(newval, oldval){
+            console.log(newval)
+          },
+          immediate:true
+        }
       }
     }
 </script>
