@@ -9,6 +9,7 @@ import CrateArticle from "../components/CreateArticle"
 import ArticleManager from "../components/ArticleManager"
 import ShowArticle from "../components/ShowArticle"
 import UpdateArticle from "../components/updateArticle"
+import Category from "../components/category"
 
 
 Vue.use(Router);
@@ -24,6 +25,7 @@ export default new Router({
     {path:"/articleManager",component:ArticleManager},
     {path:"/showArticle",name:"showArticleLink",component:ShowArticle},
     {path:"/updateArticle",name:"updateArticleLink",component:UpdateArticle},
+    {path:"/category/:cate", name:"categoryLink", component:Category},
     {path:"*",component:Home}
   ],
   /*mode:'history'*/

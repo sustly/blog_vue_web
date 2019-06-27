@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <app-header></app-header>
-
+    <show-article-list></show-article-list>
     <app-footer></app-footer>
   </div>
     
@@ -10,11 +10,13 @@
 <script>
   import Header from "../components/Header"
   import Footer from "../components/Footer"
+  import ShowArticleList from "./ShowArticleList"
     export default {
         name: "Hot",
       components:{
         "app-header":Header,
-        "app-footer":Footer
+        "app-footer":Footer,
+        "showArticleList":ShowArticleList
       }
     }
 </script>

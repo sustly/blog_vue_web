@@ -21,11 +21,11 @@
                 分类
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <router-link class="dropdown-item" to="/" >java</router-link>
-                <router-link class="dropdown-item" to="/">c++</router-link>
-                <router-link class="dropdown-item" to="/">python</router-link>
-                <router-link class="dropdown-item" to="/">vue</router-link>
-                <router-link class="dropdown-item" to="/">javascript</router-link>
+                <a class="dropdown-item" v-on:click="changeCategory('java')"  >java</a>
+                <a class="dropdown-item" v-on:click="changeCategory('c++')" >c++</a>
+                <a class="dropdown-item" v-on:click="changeCategory('python')">python</a>
+                <a class="dropdown-item" v-on:click="changeCategory('vue')">vue</a>
+                <a class="dropdown-item" v-on:click="changeCategory('javascript')">javascript</a>
               </div>
             </li>
           </ul>
@@ -83,6 +83,9 @@
         loginOut:function () {
           this.$store.commit("setUser",null);
           this.$router.push({name:'loginLink'})
+        },
+        changeCategory:function (value) {
+          this.$router.push({name:"categoryLink", params:{cate:value}})
         }
       }
     }
