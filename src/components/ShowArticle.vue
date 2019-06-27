@@ -6,7 +6,7 @@
         <h3 class="blogtitle">{{blog.title}}</h3>
       </div>
       <div>
-        <p class="bloginfo"><span>{{blog.createUser}}</span><span>{{blog.createTime}}</span><span>浏览量：{{blog.views + 2}}</span><span>【<a v-bind:href="'/'+blog.category">{{blog.category}}</a>】</span></p>
+        <p class="bloginfo"><span>{{blog.createUser}}</span><span>{{blog.createTime}}</span><span>【<a v-bind:href="'/'+blog.category">{{blog.category}}</a>】</span></p>
       </div>
       <div style="padding-left: 20px;padding-right: 20px">
         <div id="content" v-html="blog.content"  class="markdown-body"></div>
