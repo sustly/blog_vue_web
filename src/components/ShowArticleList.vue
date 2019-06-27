@@ -3,9 +3,9 @@
       <div class="whitebg bloglist">
       <ul v-for="(blog, index) in blogList">
         <li>
-          <h3 class="blogtitle"><router-link to="/" target="_blank">{{blog.title}}</router-link></h3>
+          <h3 class="blogtitle"><a v-on:click="read(blog.id)" target="_blank">{{blog.title}}</a></h3>
           <span class="blogpic imgscale"><i><a href="/">设计制作</a></i><a href="/" title=""><img v-bind:src="'../../static/images/'+index+'.jpg'" alt=""></a></span>
-          <p class="blogtext">{{blog.content}}</p>
+          <p class="blogtext">{{blog.content | getSummary}}</p>
           <p class="bloginfo"><i class="avatar"><img src="../../static/images/avatar.png"></i><span>{{blog.createUser}}</span><span>{{blog.createTime}}</span><span>【<a href="/">{{blog.category}}</a>】</span></p>
           <a v-on:click="read(blog.id)" class="viewmore">阅读更多</a> </li>
       </ul>
@@ -31,7 +31,7 @@
       watch:{
         page:{
           handler(newval, oldval){
-            var currentPage = this.page -1;
+            var currentPage = newval -1;
             fetch("/api/blog/getArticleList/"+ currentPage,{
               method:"post",
               headers: {
@@ -54,6 +54,11 @@
           read(id){
             this.$store.commit("setId",id);
             this.$router.push({name:'showArticleLink'});
+          }
+      },
+      filters:{
+          getSummary(value){
+            return value.substring(0, 200)+"..."
           }
       }
     }
