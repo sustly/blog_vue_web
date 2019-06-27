@@ -1,17 +1,17 @@
 <template>
     <div class="container">
       <div class="whitebg bloglist">
-      <ul v-for="i in 10">
+      <ul v-for="(blog, index) in blogList">
         <li>
-          <h3 class="blogtitle"><router-link to="/" target="_blank">作为一个设计师,如果遭到质疑你是否能恪守自己的原则?</router-link></h3>
-          <span class="blogpic imgscale"><i><a href="/">设计制作</a></i><a href="/" title=""><img v-bind:src="'../../static/images/'+i+'.jpg'" alt=""></a></span>
-          <p class="blogtext">就拿我自己来说吧，有时候会很矛盾，设计好的作品，不把它分享出来，会觉得待在自己电脑里面实在是没有意义。干脆就发布出去吧。我也害怕收到大家不好的评论，有些评论，可能说者无意，但是对于每一个用心的站长来说，都会受很深的影响，愤怒，恼羞。... </p>
-          <p class="bloginfo"><i class="avatar"><img src="../../static/images/avatar.png"></i><span>123</span><span>2018-10-28</span><span>【<a href="/">设计制作</a>】</span></p>
-          <a v-on:click="read(i)" class="viewmore">阅读更多</a> </li>
+          <h3 class="blogtitle"><router-link to="/" target="_blank">{{blog.title}}</router-link></h3>
+          <span class="blogpic imgscale"><i><a href="/">设计制作</a></i><a href="/" title=""><img v-bind:src="'../../static/images/'+index+'.jpg'" alt=""></a></span>
+          <p class="blogtext">{{blog.content}}</p>
+          <p class="bloginfo"><i class="avatar"><img src="../../static/images/avatar.png"></i><span>{{blog.createUser}}</span><span>{{blog.createTime}}</span><span>【<a href="/">{{blog.category}}</a>】</span></p>
+          <a v-on:click="read(blog.id)" class="viewmore">阅读更多</a> </li>
       </ul>
       </div>
       <div style="padding-left: 30%">
-        <pagination v-bind:records="1000" v-model="page" v-bind:options="options" >
+        <pagination v-bind:records="records" v-bind:per-page="10" v-model="page" v-bind:options="options" >
         </pagination>
       </div>
     </div>
@@ -19,23 +19,40 @@
 
 <script>
     export default {
-        name: "ShowArticle",
+        name: "ShowArticleList",
       data(){
           return {
             page:1,
-            options:{theme:'bootstrap4',texts:{count:''}}}
+            options:{theme:'bootstrap4',texts:{count:''}},
+            records:1,
+            blogList:null
+          }
       },
       watch:{
         page:{
           handler(newval, oldval){
-            console.log(newval)
+            var currentPage = this.page -1;
+            fetch("/api/blog/getArticleList/"+ currentPage,{
+              method:"post",
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            }).then(result => {
+              if (!result.ok) {
+                alert("通信失败，请联系管理员！");
+              }
+              return result.json()
+            }).then(data => {
+              this.records = data.records;
+              this.blogList = data.blogList;
+            })
           },
           immediate:true
         }
       },
       methods:{
-          read(i){
-            this.$store.commit("setId",i);
+          read(id){
+            this.$store.commit("setId",id);
             this.$router.push({name:'showArticleLink'});
           }
       }
