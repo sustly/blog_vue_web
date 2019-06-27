@@ -87,7 +87,7 @@
             method:"post",
             body:JSON.stringify({"content":this.content,"category":this.category,
               "title":this.title,"createUser":this.$store.getters.getUser.username,
-              "views":null
+              "views":0
             }),
             headers: {
               'Content-Type': 'application/json',

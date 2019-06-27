@@ -6,7 +6,7 @@
           <h3 class="blogtitle"><a v-on:click="read(blog.id)" target="_blank">{{blog.title}}</a></h3>
           <span class="blogpic imgscale"><i><a href="/">{{blog.category}}</a></i><a href="/" title=""><img v-bind:src="'../../static/images/'+index+'.jpg'" alt=""></a></span>
           <p class="blogtext">{{blog.content | getSummary}}</p>
-          <p class="bloginfo"><i class="avatar"><img src="../../static/images/avatar.png"></i><span>{{blog.createUser}}</span><span>{{blog.createTime}}</span><span>【<a href="/">{{blog.category}}</a>】</span></p>
+          <p class="bloginfo"><i class="avatar"><img src="../../static/images/avatar.png"></i><span>{{blog.createUser}}</span><span>{{blog.createTime}}</span><span>浏览量：{{blog.views}}</span><span>【<a href="/">{{blog.category}}</a>】</span></p>
           <a v-on:click="read(blog.id)" class="viewmore">阅读更多</a> </li>
       </ul>
       </div>

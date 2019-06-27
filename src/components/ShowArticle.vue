@@ -6,7 +6,7 @@
         <h3 class="blogtitle">{{blog.title}}</h3>
       </div>
       <div>
-        <p class="bloginfo"><span>{{blog.createUser}}</span><span>{{blog.createTime}}</span><span>【<a v-bind:href="'/'+blog.category">{{blog.category}}</a>】</span></p>
+        <p class="bloginfo"><span>{{blog.createUser}}</span><span>{{blog.createTime}}</span><span>浏览量：{{blog.views + 1}}</span><span>【<a v-bind:href="'/'+blog.category">{{blog.category}}</a>】</span></p>
       </div>
       <div style="padding-left: 20px;padding-right: 20px">
         <div id="content" v-html="blog.content"  class="markdown-body"></div>
@@ -29,6 +29,7 @@
           }
     },
     created(){
+      //根据id获取blog
       fetch("/api/blog/getArticle/"+this.id,{
         method:"post",
         headers: {
@@ -42,6 +43,13 @@
       }).then(data => {
         if (data.result ===true) {
           this.$store.commit("setBlog",data.blog);
+        }
+      });
+      //增加一次阅读量
+      fetch("/api/blog/view/"+this.id,{
+        method:"post",
+        headers: {
+          'Content-Type': 'application/json'
         }
       })
     },
