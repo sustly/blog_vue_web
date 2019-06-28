@@ -25,14 +25,23 @@
             page:1,
             options:{theme:'bootstrap4',texts:{count:''}},
             records:1,
-            blogList:null
+            blogList:null,
+            type:this.$store.getters.getType
           }
       },
       watch:{
         page:{
           handler(newval, oldval){
             var currentPage = newval -1;
-            fetch("/api/blog/getArticleList/"+ currentPage,{
+            var typeStr = "";
+            if (this.type === 'home') {
+              typeStr = "/api/blog/getArticleListByTime/";
+            }else if (this.type === 'hot'){
+              typeStr = "/api/blog/getArticleListByView/";
+            } else {
+              typeStr = "/api/blog/getArticleListByCategory/" + this.type +"/";
+            }
+            fetch(typeStr + currentPage,{
               method:"post",
               headers: {
                 'Content-Type': 'application/json'

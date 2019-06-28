@@ -8,7 +8,8 @@ export const store = new Vuex.Store({
   state:{
     user:null,
     blog:null,
-    id:0
+    id:0,
+    type:0
   },
   getters:{
     getUser:state => {
@@ -19,6 +20,9 @@ export const store = new Vuex.Store({
     },
     getId:state => {
       return state.id
+    },
+    getType:state => {
+      return state.type
     }
   },
   mutations:{
@@ -30,6 +34,9 @@ export const store = new Vuex.Store({
     },
     setId:(state,id) =>{
       state.id = id
+    },
+    setType:(state,type) => {
+      state.type = type
     }
   },
   plugins:[PersistedState({

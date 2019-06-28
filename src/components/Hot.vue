@@ -17,6 +17,9 @@
         "app-header":Header,
         "app-footer":Footer,
         "showArticleList":ShowArticleList
+      },
+      created(){
+          this.$store.commit("setType", 'hot')
       }
     }
 </script>
