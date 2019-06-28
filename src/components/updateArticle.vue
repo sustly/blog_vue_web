@@ -94,7 +94,7 @@
           fetch("/api/blog/updateArticle",{
             method:"post",
             body:JSON.stringify({"content":this.content,"category":this.category,
-              "title":this.title
+              "title":this.title,"id":this.id
             }),
             headers: {
               'Content-Type': 'application/json',

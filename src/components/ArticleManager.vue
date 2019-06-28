@@ -1,39 +1,28 @@
 <template>
   <div class="container">
     <app-header></app-header>
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
-      </tbody>
-    </table>
+    <div style="padding-left: 50px;padding-right: 50px">
+      <table class="table table-striped"  >
+        <thead>
+        <tr class="row">
+          <th class="col-8">我的博客</th>
+          <th class="col-4" style="text-align: center">操作</th>
+        </tr>
 
+        </thead>
+        <tbody v-for="blog in blogList">
+        <tr class="row">
+          <td class="col-9"><h3 class="blogtitle">{{blog.title}}</h3></td>
+          <td class="col-3">
+            <button type="button" v-on:click="updateArticle(blog.id)" class="btn btn-info">修改</button>
+            <button type="button" v-on:click="deleteArticle(blog.id)" class="btn btn-danger">删除</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
     <div style="padding-left: 30%">
-      <pagination v-bind:records="1000" v-model="page" v-bind:options="options" >
+      <pagination v-bind:records="records" v-bind:per-page="10" v-model="page" v-bind:options="options" >
       </pagination>
     </div>
 
@@ -53,12 +42,49 @@
       data(){
         return {
           page:1,
-          options:{theme:'bootstrap4',texts:{count:''}}}
+          options:{theme:'bootstrap4',texts:{count:''}},
+          records:1,
+          blogList:null
+        }
+      },
+      methods:{
+        updateArticle:function (id) {
+          this.$store.commit("setId",id);
+          this.$router.push({name:"updateArticleLink"});
+        },
+        deleteArticle:function (id) {
+          fetch("/api/blog/deleteArticle/" + id,{
+            method:"post",
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }).then(result => {
+            if (!result.ok) {
+              alert("通信失败，请联系管理员！");
+            }else {
+              this.$router.go(0);
+            }
+          })
+        }
       },
       watch:{
         page:{
           handler(newval, oldval){
-            console.log(newval)
+            var currentPage = newval -1;
+            fetch("/api/blog/getArticleListByTime/" + currentPage,{
+              method:"post",
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            }).then(result => {
+              if (!result.ok) {
+                alert("通信失败，请联系管理员！");
+              }
+              return result.json()
+            }).then(data => {
+              this.records = data.records;
+              this.blogList = data.blogList;
+            })
           },
           immediate:true
         }
@@ -67,5 +93,7 @@
 </script>
 
 <style scoped>
-
+  .blogtitle { font-size: 16px }
+  .blogtitle { margin: 20px 0 20px 0; font-size: 18px; overflow: hidden; }
+  .blogtitle b { color: #F00 }
 </style>
