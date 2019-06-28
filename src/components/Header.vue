@@ -43,8 +43,8 @@
           </ul>
 
           <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="全文检索" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">查找</button>
+            <input class="form-control mr-sm-2" v-model="searchValue" type="search" placeholder="全文检索" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" v-on:click="search" type="submit">查找</button>
           </form>
 
           <div class="navbar-nav ml-auto" v-if="isLogin()">
@@ -73,7 +73,8 @@
         name: "Header",
       data(){
         return {
-          username:null
+          username:null,
+          searchValue:""
         }
       },
       methods:{
@@ -86,7 +87,16 @@
         },
         changeCategory:function (value) {
           this.$router.push({name:"categoryLink", params:{cate:value}})
+        },
+        search:function () {
+          if (this.searchValue !== "") {
+            this.$store.commit("setSearch",this.searchValue);
+            this.$router.push({name:'homeLink',query:{"search":this.searchValue}})
+          }
         }
+      },
+      destroyed(){
+        this.$store.commit("setSearch","");
       }
     }
 </script>

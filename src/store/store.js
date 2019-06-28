@@ -9,7 +9,8 @@ export const store = new Vuex.Store({
     user:null,
     blog:null,
     id:0,
-    type:0
+    type:0,
+    search:""
   },
   getters:{
     getUser:state => {
@@ -23,6 +24,9 @@ export const store = new Vuex.Store({
     },
     getType:state => {
       return state.type
+    },
+    getSearch:state => {
+      return state.search
     }
   },
   mutations:{
@@ -37,6 +41,9 @@ export const store = new Vuex.Store({
     },
     setType:(state,type) => {
       state.type = type
+    },
+    setSearch:(state,search) => {
+      state.search = search
     }
   },
   plugins:[PersistedState({

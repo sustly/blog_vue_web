@@ -41,11 +41,17 @@
             } else {
               typeStr = "/api/blog/getArticleListByCategory/" + this.type +"/";
             }
+            let body = null;
+            if(this.$store.getters.getSearch !== ""){
+              typeStr = "/api/blog/getArticleListBySearch/" + encodeURIComponent( this.$store.getters.getSearch) + "/";
+            }
+
             fetch(typeStr + currentPage,{
               method:"post",
               headers: {
                 'Content-Type': 'application/json'
-              }
+              },
+              body:body
             }).then(result => {
               if (!result.ok) {
                 alert("通信失败，请联系管理员！");
@@ -64,6 +70,9 @@
             this.$store.commit("setId",id);
             this.$router.push({name:'showArticleLink'});
           }
+      },
+      destroyed(){
+          this.$store.commit("setSearch","");
       },
       filters:{
           getSummary(value){
