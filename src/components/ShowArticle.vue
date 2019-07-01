@@ -9,7 +9,7 @@
         <p class="bloginfo"><span>{{blog.createUser}}</span><span>{{blog.createTime}}</span><span>【<a v-bind:href="'/'+blog.category">{{blog.category}}</a>】</span></p>
       </div>
       <div style="padding-left: 20px;padding-right: 20px">
-        <div id="content" v-html="blog.content"  class="markdown-body"></div>
+        <div id="content" v-highlight v-html="blog.content"  class="markdown-body"></div>
       </div>
     </div>
     <app-footer></app-footer>
@@ -20,6 +20,19 @@
 
   import Header from "../components/Header"
   import Footer from "../components/Footer"
+  import Vue from 'vue'
+  import marked from 'marked'
+  // Vue-cli生成的工程文件的src/main.js
+  import hljs from 'highlight.js'
+  import 'highlight.js/styles/googlecode.css' //样式文件
+
+  Vue.directive('highlight',function (el) {
+    let blocks = el.querySelectorAll('pre code');
+    blocks.forEach((block)=>{
+      hljs.highlightBlock(block)
+    })
+  });
+
   export default {
         name: "ShowArticle",
     data(){
@@ -44,7 +57,8 @@
                 return result.json()
               }).then(data => {
                 if (data.result ===true) {
-                  this.blog = data.blog
+                  this.blog = data.blog;
+                  this.blog.content = marked(data.blog.content)
                 }
               });
             },
