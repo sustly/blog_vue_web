@@ -67,8 +67,7 @@
       },
       methods:{
           read(id){
-            this.$store.commit("setId",id);
-            this.$router.push({name:'showArticleLink'});
+            this.$router.push({name:'showArticleLink',params:{id:id}});
           }
       },
       destroyed(){

@@ -24,27 +24,34 @@
         name: "ShowArticle",
     data(){
           return {
-            id:this.$store.getters.getId,
-            blog:this.$store.getters.getBlog
+            id:this.$route.params.id,
+            blog:{}
+          }
+    },
+    watch:{
+          id:{
+            handler(newval, olval){
+              //根据id获取blog
+              fetch("/api/blog/getArticle/"+this.id,{
+                method:"post",
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              }).then(result => {
+                if (!result.ok) {
+                  alert("通信失败，请联系管理员！");
+                }
+                return result.json()
+              }).then(data => {
+                if (data.result ===true) {
+                  this.blog = data.blog
+                }
+              });
+            },
+            immediate:true
           }
     },
     created(){
-      //根据id获取blog
-      fetch("/api/blog/getArticle/"+this.id,{
-        method:"post",
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }).then(result => {
-        if (!result.ok) {
-          alert("通信失败，请联系管理员！");
-        }
-        return result.json()
-      }).then(data => {
-        if (data.result ===true) {
-          this.$store.commit("setBlog",data.blog);
-        }
-      });
       //增加一次阅读量
       fetch("/api/blog/view/"+this.id,{
         method:"post",

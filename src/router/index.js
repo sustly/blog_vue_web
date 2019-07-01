@@ -23,7 +23,7 @@ export default new Router({
     {path:"/hot",name:"hotLink",component:Hot},
     {path:"/crateArticle",component:CrateArticle},
     {path:"/articleManager",component:ArticleManager},
-    {path:"/showArticle",name:"showArticleLink",component:ShowArticle},
+    {path:"/showArticle/:id",name:"showArticleLink",component:ShowArticle},
     {path:"/updateArticle",name:"updateArticleLink",component:UpdateArticle},
     {path:"/category/:cate", name:"categoryLink", component:Category},
     {path:"*",component:Home}
