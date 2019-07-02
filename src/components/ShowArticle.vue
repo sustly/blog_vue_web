@@ -58,7 +58,7 @@
               }).then(data => {
                 if (data.result ===true) {
                   this.blog = data.blog;
-                  this.blog.content = marked(data.blog.content)
+                  this.blog.content = marked(data.blog.content).replace('<p><img', '<p style="text-align: center"><img style="height:300px;margin:0 auto"');
                 }
               });
             },
