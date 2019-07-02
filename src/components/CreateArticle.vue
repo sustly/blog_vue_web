@@ -65,15 +65,19 @@
         // 绑定@imgAdd event
         imgAdd(pos, $file) {
           // 第一步.将图片上传到服务器.
-
+          $file.
           this.img_file[pos] = $file;
-          alert($file.name);
           let formdata = new FormData();
-          formdata.append('image', this.img_file[1]);
+          formdata.append('image', $file);
 
           fetch("/api/blog/uploadImg",{
             method: 'post',
             body: formdata
+          }).then(result => {
+            if (!result.ok) {
+              alert("通信失败，请联系管理员！");
+            }
+            return result.json()
           }).then((res) => {
             if(res.result === true){
               // 第二步.将返回的url替换到文本原位置![...](0) -> ![...](url)
