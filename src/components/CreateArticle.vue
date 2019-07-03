@@ -65,7 +65,6 @@
         // 绑定@imgAdd event
         imgAdd(pos, $file) {
           // 第一步.将图片上传到服务器.
-          $file.
           this.img_file[pos] = $file;
           let formdata = new FormData();
           formdata.append('image', $file);
