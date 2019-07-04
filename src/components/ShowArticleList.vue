@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" v-bind:key="Math.random()">
       <div class="whitebg bloglist">
       <ul v-for="(blog, index) in blogList">
         <li>
