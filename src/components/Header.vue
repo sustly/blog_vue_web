@@ -89,7 +89,7 @@
           this.$router.push({name:"categoryLink", params:{cate:value}})
         },
         search:function () {
-          if (this.searchValue !== "") {
+          if (this.searchValue.trim() !== "") {
             this.$store.commit("setSearch",this.searchValue);
             this.$router.push({name:'searchLink',params:{search:this.searchValue}});
             this.$router.go(0);
