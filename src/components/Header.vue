@@ -91,7 +91,8 @@
         search:function () {
           if (this.searchValue !== "") {
             this.$store.commit("setSearch",this.searchValue);
-            this.$router.push({name:'homeLink',query:{"search":this.searchValue}})
+            this.$router.push({name:'searchLink',params:{search:this.searchValue}});
+            this.$router.go(0);
           }
         }
       },

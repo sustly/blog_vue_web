@@ -10,6 +10,7 @@ import ArticleManager from "../components/ArticleManager"
 import ShowArticle from "../components/ShowArticle"
 import UpdateArticle from "../components/updateArticle"
 import Category from "../components/category"
+import Search from "../components/Search"
 
 
 Vue.use(Router);
@@ -26,6 +27,7 @@ export default new Router({
     {path:"/showArticle/:id",name:"showArticleLink",component:ShowArticle},
     {path:"/updateArticle",name:"updateArticleLink",component:UpdateArticle},
     {path:"/category/:cate", name:"categoryLink", component:Category},
+    {path:"/search/:search",name:"searchLink",component:Search},
     {path:"*",component:Home}
   ],
   /*mode:'history'*/

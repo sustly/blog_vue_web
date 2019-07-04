@@ -21,14 +21,6 @@
       },
       created(){
           this.$store.commit("setType", 'home')
-      },
-      watch: {
-        '$route' (to, from) {
-          this.$router.go(0);
-
-        }},
-      destroyed(){
-        this.$store.commit("setSearch","");
       }
     }
 </script>
