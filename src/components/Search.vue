@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" v-bind:key="Math.random()">
       <app-header></app-header>
       <show-article-list></show-article-list>
       <app-footer></app-footer>
@@ -26,7 +26,9 @@
         search (to, from) {
           this.$router.go(0);
 
-        }},
+        }
+        },
+
       created(){
         // 创建Form
         var form = $('<form></form>');
@@ -37,6 +39,8 @@
         // form的target属性决定form在哪个页面提交
         // _self -> 当前页面 _blank -> 新页面
         form.attr('target', '_blank');
+
+        this.$store.commit("setSearch", this.search)
       },
       destroyed(){
         this.$store.commit("setSearch","");

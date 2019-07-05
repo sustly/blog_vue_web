@@ -19,7 +19,11 @@
         "showArticleList":ShowArticleList
       },
       created(){
-        this.$store.commit("setType", this.$route.params.cate)
+        this.$store.commit("setType", this.$route.params.cate);
+        this.$store.commit("setSearch","");
+      },
+      destroyed(){
+        this.$store.commit("setType", '')
       },
       data(){
           return {

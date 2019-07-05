@@ -19,7 +19,11 @@
         "showArticleList":ShowArticleList
       },
       created(){
-          this.$store.commit("setType", 'hot')
+          this.$store.commit("setType", 'hot');
+        this.$store.commit("setSearch","");
+      },
+      destroyed(){
+        this.$store.commit("setType", '')
       }
     }
 </script>

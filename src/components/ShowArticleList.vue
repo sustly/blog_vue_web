@@ -1,5 +1,5 @@
 <template>
-    <div class="container" v-bind:key="Math.random()">
+    <div class="container">
       <div class="whitebg bloglist">
       <ul v-for="(blog, index) in blogList">
         <li>
@@ -45,7 +45,9 @@
             if(this.$store.getters.getSearch !== ""){
               typeStr = "/api/blog/getArticleListBySearch/" + encodeURIComponent( this.$store.getters.getSearch) + "/";
             }
-
+            if (typeStr.trim() === '' || typeStr === null || typeStr.endsWith('//')) {
+              return;
+            }
             fetch(typeStr + currentPage,{
               method:"post",
               headers: {
@@ -69,9 +71,6 @@
           read(id){
             this.$router.push({name:'showArticleLink',params:{id:id}});
           }
-      },
-      destroyed(){
-          this.$store.commit("setSearch","");
       },
       filters:{
           getSummary(value){
