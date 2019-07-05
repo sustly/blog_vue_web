@@ -54,7 +54,8 @@
             title:"",
             content:"",
             id:this.$store.getters.getId,
-            img_file:[]
+            img_file:[],
+            imgArray:[]
           }
       },
       created(){
@@ -102,6 +103,7 @@
             if(res.result === true){
               // 第二步.将返回的url替换到文本原位置![...](0) -> ![...](url)
               this.$refs.md.$img2Url(pos, res.url);
+              this.imgArray[pos - 1] = res.url
             }
 
           })
@@ -122,7 +124,7 @@
           fetch("/api/blog/updateArticle",{
             method:"post",
             body:JSON.stringify({"content":this.content,"category":this.category,
-              "title":this.title,"id":this.id
+              "title":this.title,"id":this.id,"images":this.imgArray
             }),
             headers: {
               'Content-Type': 'application/json',

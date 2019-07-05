@@ -53,7 +53,8 @@
             styleChange:"height: 100%;z-index:-999;",
             title:"",
             content:"",
-            img_file:[]
+            img_file:[],
+            imgArray:[]
           }
       },
       components: {
@@ -81,6 +82,7 @@
             if(res.result === true){
               // 第二步.将返回的url替换到文本原位置![...](0) -> ![...](url)
               this.$refs.md.$img2Url(pos, res.url);
+              this.imgArray[pos - 1] = res.url
             }
 
           })
@@ -114,7 +116,7 @@
             method:"post",
             body:JSON.stringify({"content":this.content,"category":this.category,
               "title":this.title,"createUser":this.$store.getters.getUser.username,
-              "views":0
+              "views":0,"images":this.imgArray
             }),
             headers: {
               'Content-Type': 'application/json',
