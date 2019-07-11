@@ -71,7 +71,7 @@
         page:{
           handler(newval, oldval){
             var currentPage = newval -1;
-            fetch("/api/blog/getArticleListByTime/" + currentPage,{
+            fetch("/api/blog/getArticleListByTime/" + this.$store.getters.getUser.username +"/"+ currentPage,{
               method:"post",
               headers: {
                 'Content-Type': 'application/json'
