@@ -9,6 +9,14 @@ import Pagination from 'vue-pagination-2'
 Vue.component('pagination', Pagination);
 Vue.config.productionTip = false;
 
+router.onError((error) => {
+  const pattern = /Loading chunk (\d)+ failed/g;
+  const isChunkLoadFailed = error.message.match(pattern);
+  const targetPath = router.history.pending.fullPath;
+  if(isChunkLoadFailed){
+    router.replace(targetPath);
+  }
+});
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
