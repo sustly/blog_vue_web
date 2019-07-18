@@ -11,7 +11,7 @@
       </ul>
       </div>
       <div style="padding-left: 30%">
-        <pagination v-bind:records="records" v-bind:per-page="5" v-model="page" v-bind:options="options" >
+        <pagination v-bind:records="records" v-bind:per-page="10" v-model="page" v-bind:options="options" >
         </pagination>
       </div>
     </div>
