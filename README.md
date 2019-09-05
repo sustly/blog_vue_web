@@ -1,6 +1,8 @@
 <<<<<<< HEAD
 # blog_web
 
+version 1.0
+
 > A Vue.js project
 
 ## Build Setup
