@@ -68,11 +68,11 @@
               return result.json()
             }).then(data => {
               if (data.result ===true) {
-                data.user.password = null;
-                this.$store.commit("setUser",data.user);
+                data.data.password = null;
+                this.$store.commit("setUser",data.data);
                 this.$router.push({name:'homeLink'})
               }else {
-                alert(data.message);
+                alert(data.data);
               }
             })
           },

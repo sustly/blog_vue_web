@@ -60,8 +60,8 @@
               }
               return result.json()
             }).then(data => {
-              this.records = data.records;
-              this.blogList = data.blogList;
+              this.records = data.data.count;
+              this.blogList = data.data.data;
             })
           },
           immediate:true

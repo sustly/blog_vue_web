@@ -71,9 +71,9 @@
             return result.json()
           }).then(data => {
             if (data.result ===true) {
-              this.title = data.blog.title;
-              this.content = data.blog.content;
-              this.category = data.blog.category;
+              this.title = data.data.title;
+              this.content = data.data.content;
+              this.category = data.data.category;
             }
           })
       },
@@ -102,8 +102,8 @@
           }).then((res) => {
             if(res.result === true){
               // 第二步.将返回的url替换到文本原位置![...](0) -> ![...](url)
-              this.$refs.md.$img2Url(pos, res.url);
-              this.imgArray[pos - 1] = res.url
+              this.$refs.md.$img2Url(pos, res.data);
+              this.imgArray[pos - 1] = res.data
             }
 
           })

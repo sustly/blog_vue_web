@@ -76,7 +76,7 @@
                 if (data.result ===true) {
                   this.$router.push({name:'loginLink'})
                 }else {
-                  alert(data.message);
+                  alert(data.data);
                 }
             })
           }

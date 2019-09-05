@@ -57,8 +57,8 @@
                 return result.json()
               }).then(data => {
                 if (data.result ===true) {
-                  this.blog = data.blog;
-                  this.blog.content = marked(data.blog.content).replace('<p><img', '<p style="text-align: center"><img style="height:300px;margin:0 auto"');
+                  this.blog = data.data;
+                  this.blog.content = marked(data.data.content).replace('<p><img', '<p style="text-align: center"><img style="height:300px;margin:0 auto"');
                 }
               });
             },

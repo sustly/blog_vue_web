@@ -82,8 +82,8 @@
               }
               return result.json()
             }).then(data => {
-              this.records = data.records;
-              this.blogList = data.blogList;
+              this.records = data.data.size;
+              this.blogList = data.data;
             })
           },
           immediate:true
